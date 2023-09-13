@@ -43,7 +43,18 @@ dependencies:
   http: ^1.1.0
   percent_indicator: ^4.0.1
   icon_badge: ^1.0.0
-
+  google_maps_flutter: ^2.5.0
+  flutter_typeahead: ^4.3.7
+  geolocator: ^9.0.2
+  google_fonts: ^4.0.3
+  permission_handler: ^10.2.0
+  flutter_polyline_points: ^2.0.0
+  google_maps_cluster_manager: ^3.0.0+1
+  fluster: ^1.2.0
+  freezed: ^2.3.2
+  url_launcher: ^6.1.14
+  map_launcher: ^2.5.0+1
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
