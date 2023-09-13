@@ -32,7 +32,7 @@ class SearchCard extends StatelessWidget {
               height: 30,
             ),
             GestureDetector(
-              onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchListViewExample(),),),
+              onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchScreen(),),),
               child: Container(
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(

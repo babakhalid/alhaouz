@@ -42,36 +42,35 @@ class _JobListState extends State<DouarsList> {
   }
 
   @override
+  void setState(fn) {
+    if (mounted) super.setState(fn);
+  }
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 25),
-      height: MediaQuery.of(context).size.height * 0.6,
-      child: NotificationListener(
-        onNotification: (ScrollNotification scrollInfo) {
-          if (scrollInfo is ScrollEndNotification) {
-            if (!isLastPage && scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
-              page++;
-              load = true;
-              isLoading = true;
+    return NotificationListener(
+      onNotification: (ScrollNotification scrollInfo) {
+        if (scrollInfo is ScrollEndNotification) {
+          if (!isLastPage && scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
+            page++;
+            load = true;
+            isLoading = true;
 
-              setState(() {});
-            }
+            setState(() {});
           }
-          return isLastPage;
-        },
+        }
+        return isLastPage;
+      },
         child: FutureBuilder<Douar>(
-          future: getDouarList(page),
-          builder: (_, snap) {
+        future: getDouarList(page),
+        builder: (_, snap) {
+          if (snap.hasData) {
+            isLastPage = snap.data!.data!.length != 20;
 
-            //print(snap.hasData);
-            if (snap.hasData) {
-              isLastPage = snap.data!.data!.length != 20;
-
-              if (page == 1) data.clear();
-              if (page == snap.data!.currentPage) {
-                data.addAll(snap.data!.data!);
-                load = false;
-              }
+            if (page == 1) data.clear();
+            if (page == snap.data!.currentPage) {
+              data.addAll(snap.data!.data!);
+              load = false;
+            }
 
               if(data.isEmpty){
                 return const Center(child: Text("No Douar found", ),);
@@ -106,7 +105,6 @@ class _JobListState extends State<DouarsList> {
             return snapWidgetHelper(snap);
           },
         ),
-      ),
-    );
+      );
   }
 }

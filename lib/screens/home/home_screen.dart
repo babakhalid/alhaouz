@@ -23,6 +23,7 @@ class HomeScreen extends StatelessWidget {
                 SearchCard(),
                 TagsList(),
                 Container(
+                    height: MediaQuery.of(context).size.height * 0.7,
                     margin: EdgeInsets.only(bottom: 40),
                     child: DouarsList()),
               ],
