@@ -358,7 +358,7 @@ class _DetailsPageState extends State<DetailsDouar> {
               left: 16,
               right: 16,
               child: nb.AppButton(
-                text: 'Admission',
+                text: 'تحديت',
                 textStyle: titleStyle,
                 color: Colors.white,
                 onTap: () {
