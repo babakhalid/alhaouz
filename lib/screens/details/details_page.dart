@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:alhaouz/screens/forms/update_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -91,15 +92,17 @@ class _DetailsPageState extends State<DetailsDouar> {
         child: Container(
           height: size.height * 0.9,
           width: size.width,
+
           child: Stack(
             children: [
               Container(
                 height: size.height - 86,
+                padding: EdgeInsets.only(bottom: 26),
                 child: Column(
 
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 10),
+                      margin: EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 25),
                       decoration: BoxDecoration(
                           color: white,
                           borderRadius: BorderRadius.circular(25),
@@ -267,8 +270,23 @@ class _DetailsPageState extends State<DetailsDouar> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
 
-                          Text("Sep 12, 2023",
-                              style: tags),
+                          InkWell(
+                            onTap: () {
+                              // Your action here
+                            },
+                            child: Container(
+                              width: 40, // Adjust size as required
+                              height: 40, // Adjust size as required
+                              decoration: BoxDecoration(
+                                //color: buttoncolor, // Using your buttonColor for background
+                                shape: BoxShape.circle,
+                                border: Border.all(color: buttoncolor, width: 2.0), // Adding a border with primary color
+                              ),
+                              child: Center(
+                                child: Icon(Icons.add, color: buttoncolor), // Icon color can be changed as needed
+                              ),
+                            ),
+                          ),
 
                           Column(
                             children: [
@@ -412,8 +430,23 @@ class _DetailsPageState extends State<DetailsDouar> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
 
-                          const Text("Sep 12, 2023",
-                              style: tags),
+                          InkWell(
+                            onTap: () {
+                              // Your action here
+                            },
+                            child: Container(
+                              width: 40, // Adjust size as required
+                              height: 40, // Adjust size as required
+                              decoration: BoxDecoration(
+                                //color: buttoncolor, // Using your buttonColor for background
+                                shape: BoxShape.circle,
+                                border: Border.all(color: buttoncolor, width: 2.0), // Adding a border with primary color
+                              ),
+                              child: Center(
+                                child: Icon(Icons.add, color: buttoncolor), // Icon color can be changed as needed
+                              ),
+                            ),
+                          ),
 
                           Column(
                             children: [
@@ -546,20 +579,11 @@ class _DetailsPageState extends State<DetailsDouar> {
                 ),
               ),
 
-              Positioned(
+              const Positioned(
                 bottom: 0,
                 left: 16,
                 right: 16,
-                child: nb.AppButton(
-                  text: 'تحديت',
-                  textStyle: titleStyle,
-                  color: Colors.white,
-                  onTap: () {
-                    //ChoosePlanScreen().launch(context);
-                    //Get.to(const ChatGPT3());
-                    //_launchUniversalLinkIos(Uri.parse("https://my.um6p.ma"));
-                  },
-                ),
+                child: ButtonUpdate(),
               ),
             ],
           ),
