@@ -21,12 +21,11 @@ Future<Response> getRequest(String endPoint) async {
     if (!await isNetworkAvailable()) throw noInternetMsg;
 
     String url = "$URL$endPoint";
-
     Response response = await get(Uri.parse(url)).timeout(Duration(seconds: timeoutDuration), onTimeout: (() => throw "Please try again"));
-
     print('Code: ${response.statusCode} $url');
     print(response.body);
     return response;
+
   } catch (e) {
     print(e);
     if (!await isNetworkAvailable()) {
@@ -121,7 +120,7 @@ Future handleResponse(Response response) async {
     final data = jsonDecode(response.body);
 
     // Store data locally in case app is backgrounded
-    await box.write('storedData', data);
+    //await box.write('storedData', data);
 
     return data;
   } else {

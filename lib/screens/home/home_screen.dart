@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                     height: MediaQuery.of(context).size.height * 0.7,
                     margin: EdgeInsets.only(bottom: 40),
-                    child: DouarsList()),
+                    child: DouarsList(filter: '',zone: "",)),
               ],
             ),
           ),

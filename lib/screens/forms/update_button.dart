@@ -52,10 +52,14 @@ class FormDialog extends StatefulWidget {
 }
 
 class _FormDialogState extends State<FormDialog> {
-  TextEditingController _nameController = TextEditingController();
+
   TextEditingController _populationController = TextEditingController();
   TextEditingController _blesseController = TextEditingController();
   TextEditingController _mortController = TextEditingController();
+
+  // Added status related variables
+  List<String> _statuses = ['Urgent need', 'Need', 'Helped'];
+  String? _selectedStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +67,7 @@ class _FormDialogState extends State<FormDialog> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          TextField(
-            controller: _nameController,
-            decoration: InputDecoration(labelText: 'Name'),
-          ),
+
           TextField(
             controller: _populationController,
             keyboardType: TextInputType.number,
@@ -82,7 +83,25 @@ class _FormDialogState extends State<FormDialog> {
             keyboardType: TextInputType.number,
             decoration: InputDecoration(labelText: 'Mort'),
           ),
-
+          SizedBox(
+            height: 8,
+          ),
+          // Adding DropdownButton for status selection
+          DropdownButton<String>(
+            value: _selectedStatus,
+            hint: Text('Select Status'),
+            items: _statuses.map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              setState(() {
+                _selectedStatus = newValue!;
+              });
+            },
+          ),
 
         ],
       ),

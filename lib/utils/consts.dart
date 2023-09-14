@@ -1,4 +1,7 @@
+import 'package:alhaouz/models/menu.dart';
 import 'package:flutter/material.dart';
+
+import '../models/filter.dart';
 
 const Color primary = Color(0xfffafafa);
 const Color secondary = Color(0xFFdbe4f3);
@@ -14,7 +17,7 @@ const Color arrowbgColor = Color(0xffe4e9f7);
 
 const String URL = "https://api.alhaouz.org/";
 const noInternetMsg = 'Oops No Internet';
-const int timeoutDuration = 30;
+const int timeoutDuration = 60;
 
 const titleStyle = TextStyle(
     fontFamily: 'SSTARABIC',
@@ -44,3 +47,17 @@ const titleStyle2 = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w500,
     color: mainFontColor);
+
+List<MenuEvent> menuEventList = [
+  MenuEvent(name: 'الكل',),
+  MenuEvent(name: '⚡ إحتياج عاجل',),
+  MenuEvent(name: '⭐ في حاجة'),
+  MenuEvent(name: '❤️ تمت المساعدة',),
+];
+
+List<Filter> zoneList = [
+  Filter(value: "0 - 10km_zone d'impact direct", categorie: "zone", name:'0 - 10Km'),
+  Filter(value: "10-30Km zone a risque tres eleve", categorie: "zone", name: "10-30Km"),
+  Filter(value: "30-50 zone a risque élevé", categorie: "zone", name: "30-50Km"),
+  Filter(value: "50 -100 zone a risque modere", categorie: "zone", name: "50 -100Km"),
+];

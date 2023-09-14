@@ -98,8 +98,8 @@ class _JobItemState extends State<DouarItem> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconText(
-                  icon: Icons.location_on_outlined, text: "#" + widget.douar.id.toString() +" "+ widget.douar.communeFr.toString()),
+             // IconText(
+              //    icon: Icons.location_on_outlined, text: "#" + widget.douar.id.toString() +" "+ widget.douar.communeFr.toString()),
 
                 IconText(
                     icon: Icons.access_time_outlined, text: widget.douar.codeCommune!.toString())

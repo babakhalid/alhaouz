@@ -15,6 +15,7 @@ class Douar {
   int? from;
   int? lastPage;
   String? lastPageUrl;
+  List<Link>? links;
   String? nextPageUrl;
   String? path;
   int? perPage;
@@ -29,7 +30,7 @@ class Douar {
     this.from,
     this.lastPage,
     this.lastPageUrl,
-
+    this.links,
     this.nextPageUrl,
     this.path,
     this.perPage,
@@ -45,7 +46,7 @@ class Douar {
     from: json["from"],
     lastPage: json["last_page"],
     lastPageUrl: json["last_page_url"],
-
+    links: json["links"] == null ? [] : List<Link>.from(json["links"]!.map((x) => Link.fromJson(x))),
     nextPageUrl: json["next_page_url"],
     path: json["path"],
     perPage: json["per_page"],
@@ -61,6 +62,7 @@ class Douar {
     "from": from,
     "last_page": lastPage,
     "last_page_url": lastPageUrl,
+    "links": links == null ? [] : List<dynamic>.from(links!.map((x) => x.toJson())),
     "next_page_url": nextPageUrl,
     "path": path,
     "per_page": perPage,
@@ -74,22 +76,20 @@ class Datum {
   int? id;
   String? nomFr;
   String? nomAr;
-  Zone? zone;
   int? regionId;
   int? provinceId;
   int? circleId;
   int? codeCommune;
-  CommuneFr? communeFr;
-  DouarMere? douarMere;
+  String? douarMere;
   int? codeLocalite;
-  TypeLocalite? typeLocalite;
+  String? typeLocalite;
   String? caractereZone;
-  Milieu? milieu;
+  String? milieu;
   int? population;
   int? menage;
   String? latitude;
   String? longitude;
-  DataStatus? dataStatus;
+  String? dataStatus;
   String? status;
   String? supported;
   Region? region;
@@ -102,12 +102,10 @@ class Datum {
     this.id,
     this.nomFr,
     this.nomAr,
-    this.zone,
     this.regionId,
     this.provinceId,
     this.circleId,
     this.codeCommune,
-    this.communeFr,
     this.douarMere,
     this.codeLocalite,
     this.typeLocalite,
@@ -131,22 +129,20 @@ class Datum {
     id: json["id"],
     nomFr: json["nom_fr"],
     nomAr: json["nom_ar"],
-    zone: zoneValues.map[json["zone"]]!,
     regionId: json["region_id"],
     provinceId: json["province_id"],
     circleId: json["circle_id"],
     codeCommune: json["code_commune"],
-    communeFr: communeFrValues.map[json["commune_fr"]]!,
-    douarMere: douarMereValues.map[json["douar_mere"]]!,
+    douarMere: json["douar_mere"],
     codeLocalite: json["code_localite"],
-    typeLocalite: typeLocaliteValues.map[json["type_localite"]]!,
+    typeLocalite: json["type_localite"],
     caractereZone: json["caractere_zone"],
-    milieu: milieuValues.map[json["milieu"]]!,
+    milieu: json["milieu"],
     population: json["population"],
     menage: json["menage"],
     latitude: json["latitude"],
     longitude: json["longitude"],
-    dataStatus: dataStatusValues.map[json["data_status"]]!,
+    dataStatus: json["data_status"],
     status: json["status"],
     supported: json["supported"],
     region: json["region"] == null ? null : Region.fromJson(json["region"]),
@@ -160,22 +156,20 @@ class Datum {
     "id": id,
     "nom_fr": nomFr,
     "nom_ar": nomAr,
-    "zone": zoneValues.reverse[zone],
     "region_id": regionId,
     "province_id": provinceId,
     "circle_id": circleId,
     "code_commune": codeCommune,
-    "commune_fr": communeFrValues.reverse[communeFr],
-    "douar_mere": douarMereValues.reverse[douarMere],
+    "douar_mere": douarMere,
     "code_localite": codeLocalite,
-    "type_localite": typeLocaliteValues.reverse[typeLocalite],
+    "type_localite": typeLocalite,
     "caractere_zone": caractereZone,
-    "milieu": milieuValues.reverse[milieu],
+    "milieu": milieu,
     "population": population,
     "menage": menage,
     "latitude": latitude,
     "longitude": longitude,
-    "data_status": dataStatusValues.reverse[dataStatus],
+    "data_status": dataStatus,
     "status": status,
     "supported": supported,
     "region": region?.toJson(),
@@ -264,8 +258,8 @@ class AssociationPivot {
 
 class Circle {
   int? id;
-  NameFr? nameFr;
-  CircleNameAr? nameAr;
+  String? nameFr;
+  String? nameAr;
   int? regionId;
   int? provinceId;
 
@@ -279,50 +273,20 @@ class Circle {
 
   factory Circle.fromJson(Map<String, dynamic> json) => Circle(
     id: json["id"],
-    nameFr: nameFrValues.map[json["name_fr"]]!,
-    nameAr: circleNameArValues.map[json["name_ar"]]!,
+    nameFr: json["name_fr"],
+    nameAr: json["name_ar"],
     regionId: json["region_id"],
     provinceId: json["province_id"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "name_fr": nameFrValues.reverse[nameFr],
-    "name_ar": circleNameArValues.reverse[nameAr],
+    "name_fr": nameFr,
+    "name_ar": nameAr,
     "region_id": regionId,
     "province_id": provinceId,
   };
 }
-
-enum CircleNameAr {
-  EMPTY,
-  NAME_AR
-}
-
-final circleNameArValues = EnumValues({
-  "أسني": CircleNameAr.EMPTY,
-  "الحوز": CircleNameAr.NAME_AR
-});
-
-enum NameFr {
-  AL_HAOUZ,
-  ASNI
-}
-
-final nameFrValues = EnumValues({
-  "Al Haouz": NameFr.AL_HAOUZ,
-  "Asni": NameFr.ASNI
-});
-
-enum CommuneFr {
-  AGHBAR,
-  IGHIL
-}
-
-final communeFrValues = EnumValues({
-  "Aghbar": CommuneFr.AGHBAR,
-  "Ighil": CommuneFr.IGHIL
-});
 
 class Contact {
   int? id;
@@ -396,40 +360,10 @@ class ContactPivot {
   };
 }
 
-enum DataStatus {
-  EMPTY,
-  OK
-}
-
-final dataStatusValues = EnumValues({
-  "": DataStatus.EMPTY,
-  "ok": DataStatus.OK
-});
-
-enum DouarMere {
-  EMPTY,
-  THE_70410701006,
-  THE_70410701017
-}
-
-final douarMereValues = EnumValues({
-  "-": DouarMere.EMPTY,
-  "70410701006": DouarMere.THE_70410701006,
-  "70410701017": DouarMere.THE_70410701017
-});
-
-enum Milieu {
-  RURAL
-}
-
-final milieuValues = EnumValues({
-  "rural": Milieu.RURAL
-});
-
 class Region {
   int? id;
-  Name? name;
-  RegionNameAr? nameAr;
+  String? name;
+  String? nameAr;
 
   Region({
     this.id,
@@ -439,61 +373,37 @@ class Region {
 
   factory Region.fromJson(Map<String, dynamic> json) => Region(
     id: json["id"],
-    name: nameValues.map[json["name"]]!,
-    nameAr: regionNameArValues.map[json["name_ar"]]!,
+    name: json["name"],
+    nameAr: json["name_ar"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "name": nameValues.reverse[name],
-    "name_ar": regionNameArValues.reverse[nameAr],
+    "name": name,
+    "name_ar": nameAr,
   };
 }
 
-enum Name {
-  MARRAKECH_SAFI
-}
+class Link {
+  String? url;
+  String? label;
+  bool? active;
 
-final nameValues = EnumValues({
-  "Marrakech-Safi": Name.MARRAKECH_SAFI
-});
+  Link({
+    this.url,
+    this.label,
+    this.active,
+  });
 
-enum RegionNameAr {
-  EMPTY
-}
+  factory Link.fromJson(Map<String, dynamic> json) => Link(
+    url: json["url"],
+    label: json["label"],
+    active: json["active"],
+  );
 
-final regionNameArValues = EnumValues({
-  "مراكش آسفي": RegionNameAr.EMPTY
-});
-
-enum TypeLocalite {
-  DOUAR,
-  SOUS_DOUAR
-}
-
-final typeLocaliteValues = EnumValues({
-  "douar": TypeLocalite.DOUAR,
-  "sous-douar": TypeLocalite.SOUS_DOUAR
-});
-
-enum Zone {
-  THE_010_KM_ZONE_D_IMPACT_DIRECT
-}
-
-final zoneValues = EnumValues({
-  "0 - 10km_zone d'impact direct": Zone.THE_010_KM_ZONE_D_IMPACT_DIRECT
-});
-
-
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
+  Map<String, dynamic> toJson() => {
+    "url": url,
+    "label": label,
+    "active": active,
+  };
 }

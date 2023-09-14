@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:alhaouz/utils/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -10,7 +11,9 @@ import 'job_details.dart';
 import 'douar_item.dart';
 
 class DouarsList extends StatefulWidget {
-  DouarsList({Key? key}) : super(key: key);
+  DouarsList({Key? key, required this.filter, required this.zone}) : super(key: key);
+  final String filter;
+  final String zone;
 
   @override
   State<DouarsList> createState() => _JobListState();
@@ -61,19 +64,18 @@ class _JobListState extends State<DouarsList> {
         return isLastPage;
       },
         child: FutureBuilder<Douar>(
-        future: getDouarList(page),
+        future: getDouarList(widget.filter, page, widget.zone),
         builder: (_, snap) {
           if (snap.hasData) {
-            isLastPage = snap.data!.data!.length != 20;
+            isLastPage = snap.data!.data!.length != 10;
 
             if (page == 1) data.clear();
             if (page == snap.data!.currentPage) {
               data.addAll(snap.data!.data!);
               load = false;
             }
-
               if(data.isEmpty){
-                return const Center(child: Text("No Douar found", ),);
+                return const Center(child: Text("لم يتغير وضع أي دوار في هذه الفئة", style: titleStyle, ),);
               }else {
                 return Column(
                   children: [
@@ -83,9 +85,6 @@ class _JobListState extends State<DouarsList> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         var getListData = data[index];
-
-
-
                         return GestureDetector(
                           onTap: (){
                             Get.to(DetailsDouar(douar: getListData,));
