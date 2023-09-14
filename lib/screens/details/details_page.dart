@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:alhaouz/screens/details/add_contact.dart';
 import 'package:alhaouz/screens/forms/update_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -432,9 +433,14 @@ class _DetailsPageState extends State<DetailsDouar> {
                             children: [
 
                               InkWell(
-                                onTap: () {
-                                  // Your action here
-                                },
+
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AddContactDialog(),
+                                    );
+                                  },
+
                                 child: Container(
                                   width: 40, // Adjust size as required
                                   height: 40, // Adjust size as required
