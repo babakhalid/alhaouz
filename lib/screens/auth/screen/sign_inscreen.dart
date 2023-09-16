@@ -187,11 +187,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: screenHeight * 0.04,
                         ),
                         Text(
-                          'Sign In',
-                          style: TextStyle(
-                              fontFamily: 'Quicksand-SemiBold',
-                              fontSize: screenHeight * 0.0215,
-                              fontWeight: FontWeight.w800),
+                          'الدخول',
+                          style: titleStyle,
                         ),
                         SizedBox(
                           height: screenHeight * 0.045,
@@ -308,9 +305,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         AppButton(
                           width: MediaQuery.of(context).size.width * 0.8,
-                          text: 'Sign in',
+                          text: 'الدخول',
                           textStyle: titleStyle,
-                          color: buttoncolor,
+                          color: primary,
                           onTap: () {
                             print(emailController.text);
                             print(passwordController.text);
@@ -345,7 +342,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
-                GestureDetector(
+               /* GestureDetector(
                   child: Text(
                     'Register',
                     textAlign: TextAlign.center,
@@ -358,7 +355,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.pushReplacementNamed(context, '/signup');
                   },
-                ),
+                ),*/
               ],
             ),
           ),

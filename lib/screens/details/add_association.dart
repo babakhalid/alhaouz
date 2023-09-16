@@ -4,6 +4,9 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../utils/consts.dart';
 
 class AddAssociationDialog extends StatefulWidget {
+  final String id_douar;
+
+  const AddAssociationDialog({super.key, required this.id_douar});
   @override
   _AddAssociationDialogState createState() => _AddAssociationDialogState();
 }

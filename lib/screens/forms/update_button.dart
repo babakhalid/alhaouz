@@ -58,7 +58,7 @@ class _FormDialogState extends State<FormDialog> {
   TextEditingController _mortController = TextEditingController();
 
   // Added status related variables
-  List<String> _statuses = ['Urgent need', 'Need', 'Helped'];
+  List<String> _statuses = ['حاجة مستعجلة', 'إحتياج متوسط', 'تمت المساعدة'];
   String? _selectedStatus;
 
   @override
@@ -71,17 +71,17 @@ class _FormDialogState extends State<FormDialog> {
           TextField(
             controller: _populationController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Population'),
+            decoration: InputDecoration(labelText: 'السكان'),
           ),
           TextField(
             controller: _blesseController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Blessé'),
+            decoration: InputDecoration(labelText: 'الجرحى'),
           ),
           TextField(
             controller: _mortController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Mort'),
+            decoration: InputDecoration(labelText: 'الشهداء'),
           ),
           SizedBox(
             height: 8,

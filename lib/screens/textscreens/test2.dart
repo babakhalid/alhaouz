@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../events/event_list.dart';
+
 class Test2 extends StatelessWidget {
   const Test2({Key? key}) : super(key: key);
 
@@ -7,10 +9,8 @@ class Test2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-          child: Text(
-            "List of donations, We are working on it",
-            style: TextStyle(color: Theme.of(context).primaryColor),
-          )),
+          margin: EdgeInsets.only(bottom: 40),
+          child: JobList()),
     );
   }
 }

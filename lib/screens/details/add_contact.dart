@@ -4,6 +4,9 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../utils/consts.dart';
 
 class AddContactDialog extends StatefulWidget {
+  final String id_douar;
+
+  const AddContactDialog({super.key, required this.id_douar});
   @override
   _AddContactDialogState createState() => _AddContactDialogState();
 }

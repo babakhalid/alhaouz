@@ -18,11 +18,9 @@ class Job {
         '#123 Ahl Tifnoute , Region',
         'Full Time',
         [
-          'Bachelors degree in industrial design, manufacturing, engineering, or a related field.',
-          'A creative eye, good imagination, and vision.',
-          'A firm grasp of market trends and consumer preferences.',
-          'Practical experience using computer-aided design software.',
-          'Good technical and IT skills.'
+          'Évaluation rapide des besoins : Envoyez des équipes d\'évaluation sur le terrain pour identifier les besoins les plus urgents des victimes.'
+          'Fourniture de soins médicaux d\'urgence : Mettez en place des hôpitaux de campagne pour traiter les blessés et fournir des médicaments essentiels.'
+          'Distribution de nourriture et d\'eau potable : Assurez-vous que les familles ont accès à des aliments de base et à de l\'eau propre pour éviter la déshydratation et la malnutrition.'
         ],
       ),
       Job(
@@ -33,11 +31,9 @@ class Job {
         '#134 Ouneine , Region',
         'Full Time',
         [
-          'Bachelors degree in industrial design, manufacturing, engineering, or a related field',
-          'A creative eye, good imagination, and vision',
-          'A firm grasp of market trends and consumer preferences',
-          'Practical experience using computer-aided design software',
-          'Good technical and IT skills'
+          'Évaluation rapide des besoins : Envoyez des équipes d\'évaluation sur le terrain pour identifier les besoins les plus urgents des victimes.'
+              'Fourniture de soins médicaux d\'urgence : Mettez en place des hôpitaux de campagne pour traiter les blessés et fournir des médicaments essentiels.'
+              'Distribution de nourriture et d\'eau potable : Assurez-vous que les familles ont accès à des aliments de base et à de l\'eau propre pour éviter la déshydratation et la malnutrition.'
         ],
       ),
       Job(
@@ -48,11 +44,9 @@ class Job {
         '#154 El Faid , Region',
         'Full Time',
         [
-          'Bachelors degree in industrial design, manufacturing, engineering, or a related field',
-          'A creative eye, good imagination, and vision',
-          'A firm grasp of market trends and consumer preferences',
-          'Practical experience using computer-aided design software',
-          'Good technical and IT skills'
+          'Évaluation rapide des besoins : Envoyez des équipes d\'évaluation sur le terrain pour identifier les besoins les plus urgents des victimes.'
+              'Fourniture de soins médicaux d\'urgence : Mettez en place des hôpitaux de campagne pour traiter les blessés et fournir des médicaments essentiels.'
+              'Distribution de nourriture et d\'eau potable : Assurez-vous que les familles ont accès à des aliments de base et à de l\'eau propre pour éviter la déshydratation et la malnutrition.'
         ],
       ),
     ];

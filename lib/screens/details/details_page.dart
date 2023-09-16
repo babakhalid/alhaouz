@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:alhaouz/screens/auth/screen/sign_inscreen.dart';
 import 'package:alhaouz/screens/details/add_contact.dart';
 import 'package:alhaouz/screens/forms/update_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:icon_badge/icon_badge.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:nb_utils/nb_utils.dart' as nb;
@@ -38,12 +41,15 @@ class _DetailsPageState extends State<DetailsDouar> {
   static gm.LatLng? _center =  gm.LatLng(30.919704, -8.4376005);
   final gm.MapType _currentMapType = gm.MapType.satellite;
 
+  final box = GetStorage();
+  String? token;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
       _center =  gm.LatLng( double.parse(widget.douar.longitude!),double.parse(widget.douar.latitude!));
-
+      token = box.read("token");
   }
 
   void _onMapCreated(gm.GoogleMapController controller) {
@@ -100,6 +106,7 @@ class _DetailsPageState extends State<DetailsDouar> {
           child: SingleChildScrollView(
 
         child: Container(
+          //padding: EdgeInsets.symmetric(vertical: 8,horizontal: 8),
           height: size.height,
           width: size.width,
 
@@ -107,7 +114,7 @@ class _DetailsPageState extends State<DetailsDouar> {
             children: [
               Positioned(
                 top: 16,
-                right: 16,
+                right: 0,
                 width: size.width,
                 height: size.height,
                 child: SingleChildScrollView(
@@ -276,10 +283,17 @@ class _DetailsPageState extends State<DetailsDouar> {
 
                               InkWell(
                                 onTap: () {
+
+                                  token != null ?
                                   showDialog(
                                     context: context,
-                                    builder: (context) => AddAssociationDialog(),
-                                  );
+                                    builder: (context) => AddAssociationDialog(id_douar:widget.douar!.id.toString()),
+                                  ) :  Get.snackbar('لضمان معلومات صحيحة',
+                                  'الجمعيات و الأشخاص الموثوقين من يمكنهم مشاركة المعلومات',
+                                  backgroundColor: Colors.redAccent,
+                                  icon: Icon(AntDesign.infocirlce, color: Colors.white,),
+                                  colorText: Colors.white,
+                                  snackPosition: SnackPosition.BOTTOM);
                                 },
                                 child: Container(
                                   width: 40, // Adjust size as required
@@ -435,10 +449,26 @@ class _DetailsPageState extends State<DetailsDouar> {
                               InkWell(
 
                                   onTap: () {
+
+                                    token != null ?
                                     showDialog(
                                       context: context,
-                                      builder: (context) => AddContactDialog(),
-                                    );
+                                      builder: (context) => AddContactDialog(id_douar:widget.douar!.id.toString()),
+                                    ) :  Get.snackbar('لضمان معلومات صحيحة',
+                                        'الجمعيات و الأشخاص الموثوقين من يمكنهم مشاركة المعلومات',
+                                        backgroundColor: Colors.redAccent,
+                                        icon: Icon(AntDesign.infocirlce, color: Colors.white,),
+                                        colorText: Colors.white,
+                                        mainButton: TextButton(
+                                          child: Text('تسجيل الدخول', style: buttonwhite,),
+                                          onPressed: () {
+                                            // Implement your action here
+                                            Get.to(LoginScreen());
+                                          },
+                                        ),
+                                        snackPosition: SnackPosition.BOTTOM);
+
+
                                   },
 
                                 child: Container(

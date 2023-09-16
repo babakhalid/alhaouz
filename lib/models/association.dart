@@ -16,7 +16,7 @@ class Associations {
   int? lastPage;
   String? lastPageUrl;
   List<Link>? links;
-  dynamic nextPageUrl;
+  String? nextPageUrl;
   String? path;
   int? perPage;
   dynamic prevPageUrl;
@@ -82,8 +82,9 @@ class Datum {
   String? pays;
   String? logo;
   DateTime? createdAt;
-  DateTime? updateAt;
-  List<Contact>? contacts;
+  DateTime? updatedAt;
+  String? phone;
+  List<dynamic>? contacts;
 
   Datum({
     this.id,
@@ -95,7 +96,8 @@ class Datum {
     this.pays,
     this.logo,
     this.createdAt,
-    this.updateAt,
+    this.updatedAt,
+    this.phone,
     this.contacts,
   });
 
@@ -109,8 +111,9 @@ class Datum {
     pays: json["pays"],
     logo: json["logo"],
     createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-    updateAt: json["update_at"] == null ? null : DateTime.parse(json["update_at"]),
-    contacts: json["contacts"] == null ? [] : List<Contact>.from(json["contacts"]!.map((x) => Contact.fromJson(x))),
+    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+    phone: json["phone"],
+    contacts: json["contacts"] == null ? [] : List<dynamic>.from(json["contacts"]!.map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {
@@ -123,80 +126,9 @@ class Datum {
     "pays": pays,
     "logo": logo,
     "created_at": createdAt?.toIso8601String(),
-    "update_at": updateAt?.toIso8601String(),
-    "contacts": contacts == null ? [] : List<dynamic>.from(contacts!.map((x) => x.toJson())),
-  };
-}
-
-class Contact {
-  int? id;
-  String? nameFr;
-  String? nameAr;
-  dynamic phone1;
-  dynamic phone2;
-  dynamic function;
-  dynamic typeId;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  Pivot? pivot;
-
-  Contact({
-    this.id,
-    this.nameFr,
-    this.nameAr,
-    this.phone1,
-    this.phone2,
-    this.function,
-    this.typeId,
-    this.createdAt,
-    this.updatedAt,
-    this.pivot,
-  });
-
-  factory Contact.fromJson(Map<String, dynamic> json) => Contact(
-    id: json["id"],
-    nameFr: json["name_fr"],
-    nameAr: json["name_ar"],
-    phone1: json["phone_1"],
-    phone2: json["phone_2"],
-    function: json["function"],
-    typeId: json["type_id"],
-    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-    pivot: json["pivot"] == null ? null : Pivot.fromJson(json["pivot"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name_fr": nameFr,
-    "name_ar": nameAr,
-    "phone_1": phone1,
-    "phone_2": phone2,
-    "function": function,
-    "type_id": typeId,
-    "created_at": createdAt?.toIso8601String(),
     "updated_at": updatedAt?.toIso8601String(),
-    "pivot": pivot?.toJson(),
-  };
-}
-
-class Pivot {
-  int? assosiationId;
-  int? contactId;
-
-  Pivot({
-    this.assosiationId,
-    this.contactId,
-  });
-
-  factory Pivot.fromJson(Map<String, dynamic> json) => Pivot(
-    assosiationId: json["assosiation_id"],
-    contactId: json["contact_id"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "assosiation_id": assosiationId,
-    "contact_id": contactId,
+    "phone": phone,
+    "contacts": contacts == null ? [] : List<dynamic>.from(contacts!.map((x) => x)),
   };
 }
 

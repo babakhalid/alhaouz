@@ -1,5 +1,5 @@
 import 'package:alhaouz/models/association.dart';
-import 'package:alhaouz/models/douar.dart' as d;
+import 'package:alhaouz/models/all_doars.dart' as d;
 import 'package:alhaouz/utils/consts.dart';
 import 'package:alhaouz/utils/network/api_rest.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class _CustomFormPageState extends State<CustomFormPage> {
     // TODO: implement initState
     super.initState();
 
-    getAssociationList().then((fetchedData) {
+    getAssociationsList().then((fetchedData) {
       setState(() {
         _association = fetchedData.data!;
         // Similarly set the `douars` if it's a separate API call
@@ -44,7 +44,7 @@ class _CustomFormPageState extends State<CustomFormPage> {
 
     getAllDouarList().then((fetchedData) {
       setState(() {
-        _douar = fetchedData.data!;
+        _douar = fetchedData.data;
         // Similarly set the `douars` if it's a separate API call
       });
     });
@@ -53,7 +53,7 @@ class _CustomFormPageState extends State<CustomFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Coordination',),
+      appBar: AppBar(title: Text('تنسيق',),
       backgroundColor: buttoncolor,),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -66,7 +66,7 @@ class _CustomFormPageState extends State<CustomFormPage> {
                       association.nameFr, association.nameFr!);
                 }).toList(),
                 searchable: true,
-                title: const Text("Associations", style: titleStyle,),
+                title: const Text("الجمعيات", style: titleStyle,),
                 selectedColor: buttoncolor,
                 onConfirm: (results) {
                   //_selectedAnimals = results;
@@ -77,7 +77,7 @@ class _CustomFormPageState extends State<CustomFormPage> {
                 items: _douar!.map((douar) {
                   return MultiSelectItem(douar.nomFr, douar.nomFr!);
                 }).toList(),
-                title: Text("Douar", style: titleStyle,),
+                title: Text("الدواوير المستهدفة", style: titleStyle,),
                 searchable: true,
                 selectedColor: buttoncolor,
                 onConfirm: (results) {
@@ -88,7 +88,7 @@ class _CustomFormPageState extends State<CustomFormPage> {
               TextField(
                 controller: descriptionController,
                 decoration: InputDecoration(
-                  labelText: "Description",
+                  labelText: "الأهداف المسطرة",
                   border: OutlineInputBorder(),
                 ),
                 maxLines: 5,

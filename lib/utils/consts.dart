@@ -48,6 +48,12 @@ const titleStyle2 = TextStyle(
     fontWeight: FontWeight.w500,
     color: mainFontColor);
 
+const buttonwhite = TextStyle(
+    fontFamily: 'SSTARABIC',
+    fontSize: 12.0,
+    fontWeight: FontWeight.w700,
+    color: primary);
+
 List<MenuEvent> menuEventList = [
   MenuEvent(name: 'الكل',),
   MenuEvent(name: '⚡ إحتياج عاجل',),

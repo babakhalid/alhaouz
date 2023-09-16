@@ -17,9 +17,13 @@ class IconText extends StatelessWidget {
         SizedBox(
           width: 15,
         ),
-        Text(
-          text,
-          style: TextStyle(fontSize: 12, color: Colors.grey),
+        Container(
+
+          child: Text(
+            text,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontSize: 10, color: Colors.grey),
+          ),
         )
       ],
     );
